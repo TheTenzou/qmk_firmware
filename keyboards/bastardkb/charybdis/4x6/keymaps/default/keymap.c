@@ -24,21 +24,32 @@ enum charybdis_keymap_layers {
 
 #define LOWER MO(LAYER_LOWER)
 #define RAISE MO(LAYER_RAISE)
+#define FUN_ESC LT(LAYER_LOWER, KC_ESC)
+#define SYM_BSC LT(LAYER_RAISE, KC_BSPC)
+
+#define HOME_A    MT(MOD_LGUI, KC_A)
+#define HOME_S    MT(MOD_LALT, KC_S)
+#define HOME_D    MT(MOD_LSFT, KC_D)
+#define HOME_F    MT(MOD_LCTL, KC_F)
+#define HOME_J    MT(MOD_LCTL | MOD_RCTL, KC_J)
+#define HOME_K    MT(MOD_LSFT | MOD_RSFT, KC_K)
+#define HOME_L    MT(MOD_LALT | MOD_RALT, KC_L)
+#define HOME_SCLN MT(MOD_LGUI | MOD_RGUI, KC_SCLN)
 
 // clang-format off
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [LAYER_BASE] = LAYOUT(
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
-        KC_ESC,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
+        KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_BSLS,
+        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_EQL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LSFT,    KC_A,    KC_S,    KC_D,    KC_F,    KC_G,       KC_H,    KC_J,    KC_K,    KC_L, KC_SCLN, KC_QUOT,
+       KC_LSFT,  HOME_A,  HOME_S,  HOME_D,  HOME_F,    KC_G,       KC_H,  HOME_J,  HOME_K,  HOME_L,HOME_SCLN,KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        KC_LCTL,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_LALT,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
-                                   KC_LGUI, KC_SPC,   LOWER,      RAISE,  KC_ENT,
-                                           KC_LALT, KC_BSPC,     KC_DEL
+                                   FUN_ESC, KC_SPC, SYM_BSC,     KC_TAB,  KC_ENT,
+                                           KC_LALT, DRGSCRL,     KC_DEL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -46,11 +57,11 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
        KC_TILD, KC_EXLM,   KC_AT, KC_HASH,  KC_DLR, KC_PERC,    KC_CIRC, KC_AMPR, KC_ASTR, KC_LPRN, KC_RPRN, KC_UNDS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       RM_NEXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    KC_LBRC,   KC_P7,   KC_P8,   KC_P9, KC_RBRC, XXXXXXX,
+       RM_NEXT, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,    XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       RM_TOGG, KC_LGUI, KC_LALT, KC_LCTL, KC_LSFT, XXXXXXX,    KC_PPLS,   KC_P4,   KC_P5,   KC_P6, KC_PMNS, KC_PEQL,
+       RM_TOGG,KC_LGUI,KC_MS_BTN3,KC_MS_BTN2,KC_MS_BTN1,SNIPING,KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, KC_PMNS, KC_PEQL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       RM_PREV, XXXXXXX, XXXXXXX, XXXXXXX, EE_CLR,  QK_BOOT,    KC_PAST,   KC_P1,   KC_P2,   KC_P3, KC_PSLS, KC_PDOT,
+       RM_PREV, QK_BOOT, EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX,    KC_LBRC,KC_RBRC,S(KC_LBRC),S(KC_RBRC),KC_BSLS,XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   XXXXXXX, XXXXXXX, _______,    XXXXXXX, _______,
                                            XXXXXXX, XXXXXXX,      KC_P0

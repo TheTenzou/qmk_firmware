@@ -31,6 +31,10 @@
 
 // Invert X axis on mouse reports.
 #define POINTING_DEVICE_INVERT_X
+#define CHARYBDIS_DRAGSCROLL_REVERSE_Y // inverts vertical scrolling
+#define CHARYBDIS_DRAGSCROLL_DPI 50
+
+//__--===============================================================================================================================================================================================================================================================================================================================
 
 /* RGB matrix support. */
 #ifdef RGB_MATRIX_ENABLE
