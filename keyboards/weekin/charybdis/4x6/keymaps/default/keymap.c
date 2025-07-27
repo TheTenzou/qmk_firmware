@@ -67,7 +67,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
        XXXXXXX,KC_LGUI,KC_MS_BTN3,KC_MS_BTN2,KC_MS_BTN1,SNIPING,KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, XXXXXXX,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       XXXXXXX, QK_BOOT, EE_CLR,  XXXXXXX, XXXXXXX, XXXXXXX,    KC_LBRC,KC_RBRC,S(KC_LBRC),S(KC_RBRC),XXXXXXX,XXXXXXX,
+       XXXXXXX, XXXXXXX,S_D_RMOD, S_D_MOD, DPI_MOD, DPI_RMOD,   KC_LBRC,KC_RBRC,S(KC_LBRC),S(KC_RBRC),XXXXXXX,XXXXXXX,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                   XXXXXXX, XXXXXXX, _______,    XXXXXXX, _______,
                                            XXXXXXX, XXXXXXX,    XXXXXXX
@@ -102,13 +102,13 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
 
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch (keycode) {
-        SMTD_MT(CKC_A, KC_A, KC_LEFT_GUI)
-        SMTD_MT(CKC_S, KC_S, KC_LEFT_ALT)
-        SMTD_MT(CKC_D, KC_D, KC_LSFT)
-        SMTD_MT(CKC_F, KC_F, KC_LEFT_CTRL)
-        SMTD_MT(CKC_J, KC_J, KC_LEFT_CTRL)
-        SMTD_MT(CKC_K, KC_K, KC_LSFT)
-        SMTD_MT(CKC_L, KC_L, KC_LEFT_ALT)
-        SMTD_MT(CKC_SCLN, KC_SCLN, KC_LEFT_GUI)
+        SMTD_MT(CKC_A, KC_A, KC_LEFT_GUI, 1)
+        SMTD_MT(CKC_S, KC_S, KC_LEFT_ALT, 1)
+        SMTD_MT(CKC_D, KC_D, KC_LSFT, 1)
+        SMTD_MT(CKC_F, KC_F, KC_LEFT_CTRL, 1)
+        SMTD_MT(CKC_J, KC_J, KC_LEFT_CTRL, 1)
+        SMTD_MT(CKC_K, KC_K, KC_LSFT, 1)
+        SMTD_MT(CKC_L, KC_L, KC_LEFT_ALT, 1)
+        SMTD_MT(CKC_SCLN, KC_SCLN, KC_LEFT_GUI, 1)
     }
 }
