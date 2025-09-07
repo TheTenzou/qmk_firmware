@@ -48,14 +48,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   // ╭──────────────────────────────────────────────────────╮ ╭──────────────────────────────────────────────────────╮
         KC_GRV,    KC_1,    KC_2,    KC_3,    KC_4,    KC_5,       KC_6,    KC_7,    KC_8,    KC_9,    KC_0, KC_MINS,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-        KC_TAB,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_EQL,
+       KC_LBRC,    KC_Q,    KC_W,    KC_E,    KC_R,    KC_T,       KC_Y,    KC_U,    KC_I,    KC_O,    KC_P, KC_EQL,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_LBRC,   CKC_A,   CKC_S,   CKC_D,   CKC_F,    KC_G,       KC_H,   CKC_J,   CKC_K,   CKC_L, CKC_SCLN,KC_QUOT,
+       KC_RBRC,   CKC_A,   CKC_S,   CKC_D,   CKC_F,    KC_G,       KC_H,   CKC_J,   CKC_K,   CKC_L, CKC_SCLN,KC_QUOT,
   // ├──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────┤
-       KC_RBRC,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,
+       KC_LALT,    KC_Z,    KC_X,    KC_C,    KC_V,    KC_B,       KC_N,    KC_M, KC_COMM,  KC_DOT, KC_SLSH, KC_BSLS,
   // ╰──────────────────────────────────────────────────────┤ ├──────────────────────────────────────────────────────╯
                                    FUN_ESC, KC_SPC, SYM_BSC,     KC_TAB,  KC_ENT,
-                                           KC_LALT, DRGSCRL,     KC_RCTL
+                                           KC_LBRC, KC_RBRC,     KC_LCTL
   //                            ╰───────────────────────────╯ ╰──────────────────╯
   ),
 
@@ -111,4 +111,14 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_MT(CKC_L, KC_L, KC_LEFT_ALT, 1)
         SMTD_MT(CKC_SCLN, KC_SCLN, KC_LEFT_GUI, 1)
     }
+}
+
+layer_state_t layer_state_set_user(layer_state_t state) {
+    // Enable dragscroll when Raise layer is active
+    if (layer_state_cmp(state, LAYER_RAISE)) {
+        charybdis_set_pointer_dragscroll_enabled(true);
+    } else {
+        charybdis_set_pointer_dragscroll_enabled(false);
+    }
+    return state;
 }
